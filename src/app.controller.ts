@@ -37,9 +37,11 @@ export class AuthController {
     const user = await this.requireAccessToken(request);
     const data = await this.authService.getDashboardData(user);
 
-
-
-    return { message: 'Protected API successful', ...data , role_id : user.role_id};
+    return {
+      message: 'Protected API successful',
+      ...data,
+      role_id: user.role_id,
+    };
   }
 
   @Post('refresh')
@@ -123,14 +125,6 @@ export class AuthController {
       path: cookie.accessToken.path,
     });
 
-    response.cookie('token', 'asdfjh', {
-      httpOnly: true,
-      secure: cookie.secure,
-      sameSite: cookie.sameSite,
-      maxAge: cookie.accessToken.maxAge,
-      path: cookie.accessToken.path,
-    });
-
     console.log('Cookie => ', cookie);
 
     response.cookie(cookie.refreshToken.name, tokens.refreshToken, {
@@ -146,9 +140,16 @@ export class AuthController {
     const { cookie } = AUTH_CONFIG;
 
     response.clearCookie(cookie.accessToken.name, {
+      httpOnly: true,
+      secure: cookie.secure,
+      sameSite: cookie.sameSite,
       path: cookie.accessToken.path,
     });
+
     response.clearCookie(cookie.refreshToken.name, {
+      httpOnly: true,
+      secure: true,
+      sameSite: cookie.sameSite,
       path: cookie.refreshToken.path,
     });
   }
