@@ -30,7 +30,7 @@
     "cookie-parser": "^1.4.7",
     "pg": "^8.23.0",
     "prisma": "^7.9.1",
-    "redis": "^6.2.1",
+    "redis": "^4.7.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },

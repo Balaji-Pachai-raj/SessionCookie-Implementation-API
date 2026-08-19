@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './app.controller';
 import { AuthService } from './app.service';
 import { PrismaModule } from './PrismaService/prismaservice.module';
-import { ConfigModule } from '@nestjs/config';
-import { JwtModule } from '@nestjs/jwt';
+import { RedisService } from './redis.service';
 
 @Module({
   imports: [
@@ -11,9 +12,9 @@ import { JwtModule } from '@nestjs/jwt';
       isGlobal: true,
     }),
     PrismaModule,
-    JwtModule.register({})
+    JwtModule.register({}),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, RedisService],
 })
 export class AppModule {}

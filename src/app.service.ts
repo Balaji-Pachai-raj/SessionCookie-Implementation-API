@@ -1,5 +1,7 @@
 import {
   BadRequestException,
+  HttpException,
+  HttpStatus,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -7,6 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import type { SignOptions } from 'jsonwebtoken';
 import ms from 'ms';
 import { PrismaService } from './PrismaService/prisma.service';
+import { RedisService } from './redis.service';
 // import { PrismaService } from '../prisma/prisma.service';
 
 // ============================================================================
@@ -72,14 +75,16 @@ export interface TokenPayload {
 }
 
 export class ChangeRoleDto {
-  user_role_mapping_id: string;
-  role_id: string;
+  user_role_mapping_id!: string;
+  role_id!: string;
 }
 
 interface TokenPair {
   accessToken: string;
   refreshToken: string;
 }
+
+type LoginResult = TokenPair;
 
 // ============================================================================
 // SERVICE — all business logic: DB access, token issuing/verification,
@@ -91,10 +96,64 @@ export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
+    private readonly redisService: RedisService,
   ) {}
 
-  async login(username: string, password: string): Promise<TokenPair> {
+  async login(
+    username: string,
+    password: string,
+  ): Promise<LoginResult> {
     const user = await this.findUserOrThrow(username, password);
+    const accessKey = this.getRedisKey('ACCESS', user.nt_id);
+    const refreshKey = this.getRedisKey('REFRESH', user.nt_id);
+    let existingAccess: string | null = null;
+    let existingRefresh: string | null = null;
+
+    try {
+      [existingAccess, existingRefresh] = await Promise.all([
+        this.redisService.get(accessKey),
+        this.redisService.get(refreshKey),
+      ]);
+       console.log('Redis access key:', accessKey);
+  console.log('Redis access value:', existingAccess);
+
+  console.log('Redis refresh key:', refreshKey);
+  console.log('Redis refresh value:', existingRefresh);
+    } catch {
+      throw new HttpException(
+        {
+          success: false,
+          code: 'REDIS_UNAVAILABLE',
+          message: 'Redis is unavailable. Please try again later.',
+        },
+        HttpStatus.SERVICE_UNAVAILABLE,
+      );
+    }
+
+    const hasExistingSession =
+      existingAccess !== null || existingRefresh !== null;
+
+      console.log(hasExistingSession)
+
+    console.log('Redis check for login => ', {
+      accessKey,
+      refreshKey,
+      existingAccess: existingAccess !== null,
+      existingRefresh: existingRefresh !== null,
+      accessPreview: existingAccess ? existingAccess.slice(0, 20) : null,
+      refreshPreview: existingRefresh ? existingRefresh.slice(0, 20) : null,
+      hasExistingSession,
+    });
+    if (hasExistingSession) {
+      throw new HttpException(
+        {
+          success: false,
+          code: 'USER_ALREADY_LOGGED_IN',
+          message: 'User already logged in. Please logout before logging in again.',
+        },
+        HttpStatus.CONFLICT,
+      );
+    }
 
     const activeRole = await this.prisma.user_role_mapping.findFirst({
       where: { nt_id: user.nt_id },
@@ -109,13 +168,29 @@ export class AuthService {
       is_active: user.is_active,
     };
 
-    return this.issueTokenPair({
+    const tokens = await this.issueTokenPair({
       sub: user.nt_id,
       username: user.username,
       userDetails,
       role_id: activeRole?.role_id?.toString(),
       user_role_mapping_id: activeRole?.user_role_mapping_id?.toString(),
     });
+    console.log('Tokens => ', tokens);
+
+    try {
+      await this.storeUserTokens(user.nt_id, tokens);
+    } catch {
+      throw new HttpException(
+        {
+          success: false,
+          code: 'REDIS_UNAVAILABLE',
+          message: 'Redis is unavailable. Please try again later.',
+        },
+        HttpStatus.SERVICE_UNAVAILABLE,
+      );
+    }
+
+    return tokens;
   }
 
   async getDashboardData(payload: TokenPayload) {
@@ -157,7 +232,16 @@ export class AuthService {
       user_role_mapping_id,
     });
 
+    await this.storeUserTokens(refreshPayload.sub, tokens);
+
     return { tokens, userDetails, role_id, user_role_mapping_id };
+  }
+
+  async logout(userId: string): Promise<void> {
+    await Promise.all([
+      this.redisService.delete(this.getRedisKey('ACCESS', userId)),
+      this.redisService.delete(this.getRedisKey('REFRESH', userId)),
+    ]);
   }
 
   async switchRole(currentPayload: TokenPayload, dto: ChangeRoleDto) {
@@ -210,6 +294,8 @@ export class AuthService {
       role_id: requestedRole.role_id.toString(),
       user_role_mapping_id: requestedRole.user_role_mapping_id.toString(),
     });
+
+    await this.storeUserTokens(currentPayload.sub, tokens);
 
     return { tokens, currentRole: this.serializeBigInt(requestedRole) };
   }
@@ -307,6 +393,55 @@ export class AuthService {
     ]);
 
     return { accessToken, refreshToken };
+  }
+
+  private async storeUserTokens(userId: string, tokens: TokenPair): Promise<void> {
+    const accessKey = this.getRedisKey('ACCESS', userId);
+    const refreshKey = this.getRedisKey('REFRESH', userId);
+
+    await Promise.all([
+      this.redisService.set(
+        accessKey,
+        tokens.accessToken,
+        this.getTokenTtlSeconds('access'),
+      ),
+      this.redisService.set(
+        refreshKey,
+        tokens.refreshToken,
+        this.getTokenTtlSeconds('refresh'),
+      ),
+    ]);
+
+    //checking
+      const [storedAccessToken, storedRefreshToken] = await Promise.all([
+    this.redisService.get(accessKey),
+    this.redisService.get(refreshKey),
+  ]);
+
+  // Log the Redis keys and values
+  console.log('Redis Access Key:', accessKey);
+  console.log('Redis Access Token:', storedAccessToken);
+
+  console.log('Redis Refresh Key:', refreshKey);
+  console.log('Redis Refresh Token:', storedRefreshToken);
+  }
+
+  private getRedisKey(type: 'ACCESS' | 'REFRESH', userId: string): string {
+    return `${type}_${userId}`;
+  }
+
+  private getTokenTtlSeconds(type: TokenType): number {
+    const expiresIn =
+      type === 'access'
+        ? AUTH_CONFIG.jwt.accessTokenExpiresIn
+        : AUTH_CONFIG.jwt.refreshTokenExpiresIn;
+
+    const parsed =
+      typeof expiresIn === 'number'
+        ? expiresIn * 1000
+        : ms(expiresIn as ms.StringValue);
+
+    return Math.max(1, Math.ceil(parsed / 1000));
   }
 
   private serializeBigInt<T>(data: T): T {

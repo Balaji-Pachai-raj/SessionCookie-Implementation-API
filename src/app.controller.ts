@@ -8,8 +8,8 @@ import {
 } from './app.service';
 
 export class LoginDto {
-  username: string;
-  password: string;
+  username!: string;
+  password!: string;
 }
 
 // ============================================================================
@@ -26,10 +26,15 @@ export class AuthController {
     @Body() body: LoginDto,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const tokens = await this.authService.login(body.username, body.password);
-    this.setAuthCookies(response, tokens);
+    const result = await this.authService.login(body.username, body.password);
 
-    return { message: 'Login successful' };
+    this.setAuthCookies(response, result);
+
+    return {
+      success: true,
+      code: 'LOGIN_SUCCESS',
+      message: 'Login successful',
+    };
   }
 
   @Get('dashboard')
@@ -93,7 +98,21 @@ export class AuthController {
   }
 
   @Post('logout')
-  async logout(@Res({ passthrough: true }) response: Response) {
+  async logout(
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const accessToken = request.cookies?.access_token;
+
+    if (accessToken) {
+      try {
+        const user = await this.authService.verifyAccessToken(accessToken);
+        await this.authService.logout(user.sub);
+      } catch {
+        // Ignore invalid tokens during logout and still clear cookies.
+      }
+    }
+
     this.clearAuthCookies(response);
     return { message: 'Logout successful' };
   }
@@ -123,13 +142,6 @@ export class AuthController {
       path: cookie.accessToken.path,
     });
 
-    response.cookie('token', 'asdfjh', {
-      httpOnly: true,
-      secure: cookie.secure,
-      sameSite: cookie.sameSite,
-      maxAge: cookie.accessToken.maxAge,
-      path: cookie.accessToken.path,
-    });
 
     console.log('Cookie => ', cookie);
 
