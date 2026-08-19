@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Post,
+  Req,
+  Res,
+} from '@nestjs/common';
 import type { Request, Response } from 'express';
 import {
   AUTH_CONFIG,
@@ -6,6 +14,7 @@ import {
   ChangeRoleDto,
   TokenPayload,
 } from './app.service';
+import { Public } from './public.decorator';
 
 export class LoginDto {
   username!: string;
@@ -21,6 +30,7 @@ export class LoginDto {
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Public()
   @Post('login')
   async login(
     @Body() body: LoginDto,
@@ -37,16 +47,54 @@ export class AuthController {
     };
   }
 
-  @Get('dashboard')
-  async getDashboard(@Req() request: Request) {
-    const user = await this.requireAccessToken(request);
-    const data = await this.authService.getDashboardData(user);
+  @Public()
+  @Post('continue-session')
+  async continueSession(
+    @Req() request: Request,
+    @Body() body: Partial<LoginDto>,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    let username = body?.username;
+    let password = body?.password;
 
+    if (!username && request.cookies?.access_token) {
+      const currentUser = await this.authService.verifyAccessToken(
+        request.cookies.access_token,
+      );
+      username = currentUser.username;
+      password = '';
+    }
 
+    if (!username) {
+      throw new BadRequestException(
+        'username is required. Send username/password or use the active session cookie.',
+      );
+    }
 
-    return { message: 'Protected API successful', ...data , role_id : user.role_id};
+    const result = await this.authService.continueSession(username, password);
+
+    this.setAuthCookies(response, result);
+
+    return {
+      success: true,
+      code: 'CONTINUE_SESSION_SUCCESS',
+      message: 'Previous session replaced successfully',
+    };
   }
 
+  @Get('dashboard')
+  async getDashboard(@Req() request: Request & { user?: TokenPayload }) {
+    const user = request.user as TokenPayload;
+    const data = await this.authService.getDashboardData(user);
+
+    return {
+      message: 'Protected API successful',
+      ...data,
+      role_id: user.role_id,
+    };
+  }
+
+  @Public()
   @Post('refresh')
   async refresh(
     @Req() request: Request,
@@ -70,11 +118,11 @@ export class AuthController {
 
   @Post('changerole')
   async changeRole(
-    @Req() request: Request,
+    @Req() request: Request & { user?: TokenPayload },
     @Body() body: ChangeRoleDto,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const user = await this.requireAccessToken(request);
+    const user = request.user as TokenPayload;
     const { tokens, currentRole } = await this.authService.switchRole(
       user,
       body,
@@ -89,8 +137,8 @@ export class AuthController {
   }
 
   @Get('thistoken')
-  async getThisToken(@Req() request: Request) {
-    const user = await this.requireAccessToken(request);
+  async getThisToken(@Req() request: Request & { user?: TokenPayload }) {
+    const user = request.user as TokenPayload;
     return {
       message: 'Current access token retrieved successfully',
       tokenData: user,
@@ -121,11 +169,6 @@ export class AuthController {
   // Private helpers — HTTP-transport concerns only.
   // --------------------------------------------------------------------
 
-  private requireAccessToken(request: Request): Promise<TokenPayload> {
-    const accessToken = request.cookies?.access_token;
-    return this.authService.verifyAccessToken(accessToken); // throws 401 if invalid/missing
-  }
-
   private setAuthCookies(
     response: Response,
     tokens: { accessToken: string; refreshToken: string },
@@ -142,7 +185,6 @@ export class AuthController {
       path: cookie.accessToken.path,
     });
 
-
     console.log('Cookie => ', cookie);
 
     response.cookie(cookie.refreshToken.name, tokens.refreshToken, {
@@ -158,10 +200,18 @@ export class AuthController {
     const { cookie } = AUTH_CONFIG;
 
     response.clearCookie(cookie.accessToken.name, {
+      httpOnly: true,
+      secure: cookie.secure,
+      sameSite: cookie.sameSite,
       path: cookie.accessToken.path,
     });
+
     response.clearCookie(cookie.refreshToken.name, {
+      httpOnly: true,
+      secure: true,
+      sameSite: cookie.sameSite,
       path: cookie.refreshToken.path,
     });
   }
 }
+ 

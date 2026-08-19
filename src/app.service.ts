@@ -193,6 +193,48 @@ export class AuthService {
     return tokens;
   }
 
+  async continueSession(
+    username?: string,
+    password?: string,
+  ): Promise<LoginResult> {
+    if (!username) {
+      throw new BadRequestException('username is required to continue session');
+    }
+
+    const user = await this.findUserOrThrow(username, password || '');
+    const accessKey = this.getRedisKey('ACCESS', user.nt_id);
+    const refreshKey = this.getRedisKey('REFRESH', user.nt_id);
+
+    await Promise.all([
+      this.redisService.delete(accessKey),
+      this.redisService.delete(refreshKey),
+    ]);
+
+    const activeRole = await this.prisma.user_role_mapping.findFirst({
+      where: { nt_id: user.nt_id },
+      include: { role_master: true },
+    });
+
+    const userDetails: UserTokenDetails = {
+      nt_id: user.nt_id,
+      userDetails: user.username,
+      role_name: activeRole?.role_master?.role_name,
+      is_active: user.is_active,
+    };
+
+    const tokens = await this.issueTokenPair({
+      sub: user.nt_id,
+      username: user.username,
+      userDetails,
+      role_id: activeRole?.role_id?.toString(),
+      user_role_mapping_id: activeRole?.user_role_mapping_id?.toString(),
+    });
+
+    await this.storeUserTokens(user.nt_id, tokens);
+
+    return tokens;
+  }
+
   async getDashboardData(payload: TokenPayload) {
     const nt_id = payload.userDetails?.nt_id;
 
@@ -426,7 +468,7 @@ export class AuthService {
   console.log('Redis Refresh Token:', storedRefreshToken);
   }
 
-  private getRedisKey(type: 'ACCESS' | 'REFRESH', userId: string): string {
+  public getRedisKey(type: 'ACCESS' | 'REFRESH', userId: string): string {
     return `${type}_${userId}`;
   }
 
