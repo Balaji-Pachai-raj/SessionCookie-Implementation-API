@@ -26,7 +26,7 @@ export class LoginDto {
 // sets/clears cookies, shapes the response. No Prisma, no JWT verification,
 // and no business rules live here.
 // ============================================================================
-@Controller()
+@Controller('api')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
