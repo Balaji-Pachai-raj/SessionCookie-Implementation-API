@@ -44,7 +44,7 @@ export const AUTH_CONFIG = {
     refreshToken: {
       name: 'refresh_token',
       // Only ever sent back to /refresh, not every API call.
-      path: '/refresh',
+      path: '/api/refresh',
       maxAge: ms(
         (process.env.JWT_REFRESH_TOKEN_EXPIRES_IN || '7d') as ms.StringValue,
       ),
