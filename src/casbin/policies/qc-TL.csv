@@ -1,0 +1,19 @@
+p, genericSearch-genericSearch-search, hcp, genericSearch, genericSearch, search, edit
+p, genericSearch-genericSearch-list, hcp, genericSearch, genericSearch, list, edit
+p, teamDashboard-dashboard-dashboard, hcp, teamDashboard, dashboard, dashboard, edit
+p, claimPoolDashboard-dashboard-dashboard, hcp, claimPoolDashboard, dashboard, dashboard, edit
+p, claimUserDashboard-dashboard-dashboard, hcp, claimUserDashboard, dashboard, dashboard, edit
+
+g, QC TL, genericSearch-genericSearch-search
+g, QC TL, genericSearch-genericSearch-list
+g, QC TL, teamDashboard-dashboard-dashboard
+g, QC TL, claimPoolDashboard-dashboard-dashboard
+g, QC TL, claimUserDashboard-dashboard-dashboard
+
+# Menu mappings (g -> p2)
+g, QC TL, claims_pool_dashboard
+g, QC TL, claims_team_dashboard
+g, QC TL, claim_user_dashboard_tl
+g, QC TL, generic_search
+
+g2, QC TL, hcp, claims_pool_dashboard

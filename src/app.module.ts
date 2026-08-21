@@ -7,6 +7,7 @@ import { AuthService } from './app.service';
 import { PrismaModule } from './PrismaService/prismaservice.module';
 import { RedisService } from './redis.service';
 import { AuthGuard } from './auth.guard';
+import { CasbinModule } from './casbin/casbin.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { AuthGuard } from './auth.guard';
     }),
     PrismaModule,
     JwtModule.register({}),
+    CasbinModule,
   ],
   controllers: [AuthController],
   providers: [

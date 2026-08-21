@@ -1,0 +1,9 @@
+p,  claimPoolDashboard-dashboard-dashboard,  hcp,  claimPoolDashboard,  dashboard,  dashboard,  edit
+
+g,  QC Pool User,  claimPoolDashboard-dashboard-dashboard
+
+# Menu mappings (g -> p2)
+g,  QC Pool User,  claims_pool_dashboard
+
+# Default landing page
+g2,  QC Pool User,  hcp,  claims_pool_dashboard

@@ -1,0 +1,33 @@
+# Root menu nodes (parent = _)
+p2,  dashboard,  hcp,  _,  displayName:Dashboard|route:|icon:/images/svg/menu/dashboard.svg|order:1
+p2,  generic_search,  hcp,  _,  displayName:Generic Search|route:/genericSearch|icon:/images/svg/menu/generic-search.svg|order:2
+p2,  intimate_preauth,  hcp,  _,  displayName:Intimate Preauth|route:/claim|icon:/images/svg/menu/intimate-preauth.svg|order:3
+p2,  add_view_aggregate_deductible,  hcp,  _,  displayName:Add View Aggregate Deductible|route:/policySearch/aggregateDeductibles|icon:/images/svg/menu/add-aggregate.svg|order:4
+p2,  grievence_update,  hcp,  _,  displayName:Grievance Tagging|route:/grievanceTagging|icon:/images/svg/menu/grievance-update.svg|order:5
+p2,  dashboard_initiator,  hcp,  _,  displayName:Dashboard|route:/user/initiator/dashboard|icon:/images/svg/menu/dashboard.svg|order:6
+p2,  dashboard_reviewer,  hcp,  _,  displayName:Dashboard|route:/user/reviewer/dashboard|icon:/images/svg/menu/dashboard.svg|order:7
+p2,  initiate_new_user,  hcp,  _,  displayName:Initiate New user|route:/user/initiator/new-user-request|icon:/images/svg/menu/initiate-new-user.svg|order:8
+p2,  modify_user,  hcp,  _,  displayName:Modify user|route:/user/initiator/modify-user-request|icon:/images/svg/menu/modify-user.svg|order:9
+p2,  search_user,  hcp,  _,  displayName:Search user|route:/user/reviewer/search-user|icon:/images/svg/menu/search-user.svg|order:10
+p2,  inward_entry,  hcp,  _,  displayName:Inward Entry|route:/inwardRegistrationForm|icon:/images/svg/menu/inward-entry.svg|order:11
+p2,  scanning_pool_dashboard,  hcp,  _,  displayName:Scanning Pool Dashboard|route:/scan-tag/group/dashboard|icon:/images/svg/menu/scan-pool-dashboard.svg|order:12
+p2,  claim_intimation_pool_dashboard,  hcp,  _,  displayName:Claim Intimation Pool Dashboard|route:/scan-tag/user/dashboard|icon:/images/svg/menu/claim-intimation-pool-dashboard.svg|order:13
+p2,  intimate_claim,  hcp,  _,  displayName:Intimate Claim|route:/claim|icon:/images/svg/menu/intimate-preauth.svg|order:14
+p2,  suggestive_master,  hcp,  _,  displayName:Suggestive Master|route:/suggestiveMaster|icon:/images/svg/menu/suggestive-master.svg|order:15
+p2,  re_attach,  hcp,  _,  displayName:Re-Attach|route:|icon:/images/svg/menu/reattach.svg|order:1
+p2,  time_modification,  hcp,  _,  displayName:Time Modification|route:|icon:/images/svg/menu/time-modification.svg|order:1
+p2,  integration,  hcp,  _,  displayName:Integration|route:|icon:/images/svg/menu/integration.svg|order:1
+p2,  communication,  hcp,  _,  displayName:Communication|route:/communication|icon:/images/svg/menu/dashboard.svg|order:16
+
+# Level 2 - child menu for dashboard
+p2,  claim_user_dashboard,  hcp,  dashboard,  displayName:Claim User Dashboard|route:/claim/user/dashboard|icon:|order:1
+p2,  claims_pool_dashboard,  hcp,  dashboard,  displayName:Claims Pool Dashboard|route:/claim/pool/dashboard|icon:|order:2
+p2,  claims_team_dashboard,  hcp,  dashboard,  displayName:Claims Team Dashboard|route:/teamDashboard|icon:|order:3
+p2,  claim_user_dashboard_tl,  hcp,  dashboard,  displayName:Claim User Dashboard|route:/claim/user/dashboard|icon:|order:4
+p2,  email_user_dashboard,  hcp,  dashboard,  displayName:Email User Dashboard|route:/email/user/dashboard|icon:|order:5
+p2,  email_pool_dashboard,  hcp,  dashboard,  displayName:Email Pool Dashboard|route:/email/pool/dashboard|icon:|order:6
+p2,  email_team_dashboard,  hcp,  dashboard,  displayName:Email Team Dashboard|route:/email/team/dashboard|icon:|order:7
+p2,  call_center_user_dashboard,  hcp,  dashboard,  displayName:Call Center User Dashboard|route:/scan-tag/call-center/dashboard|icon:|order:8
+p2,  claim_user_dashboard_old,  hcp,  dashboard,  displayName:Claim User Dashboard (old)|route:/claim/dashboard|icon:|order:9
+p2,  claim_pool_dashboard_old,  hcp,  dashboard,  displayName:Claims Pool Dashboard (old)|route:/claim/dashboard|icon:|order:9
+p2,  miscellanious_dashboard,  hcp,  dashboard,  displayName:Miscellanious Dashboard|route:/miscellaneousDashboard|icon:|order:10

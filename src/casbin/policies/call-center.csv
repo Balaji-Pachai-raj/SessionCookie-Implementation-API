@@ -1,0 +1,39 @@
+p,  email-pool-search,  hcp,  email,  pool,  search,  edit
+p,  callCenterUserDashboard-callCenter-searchSection,  hcp,  callCenterUserDashboard,  callCenter,  searchSection,  edit
+p,  callCenterUserDashboard-callCenter-showHideColumn,  hcp,  callCenterUserDashboard,  callCenter,  showHideColumn,  edit
+p,  callCenterUserDashboard-callCenter-taskList,  hcp,  callCenterUserDashboard,  callCenter,  taskList,  edit
+p,  callCenterUserDashboard-callCenter-startTask,  hcp,  callCenterUserDashboard,  callCenter,  startTask,  edit
+p,  uploadTask-inwardDocumentScanAndUpload-inwardDocument,  hcp,  uploadTask,  inwardDocumentScanAndUpload,  inwardDocument,  edit
+p,  uploadTask-inwardDocumentScanAndUpload-DocumentUpload,  hcp,  uploadTask,  inwardDocumentScanAndUpload,  DocumentUpload,  edit
+p,  claimIntimationSearch-claimSearch-search,  hcp,  claimIntimationSearch,  claimSearch,  search,  edit
+p,  claimIntimationSearch-claimSearch-list,  hcp,  claimIntimationSearch,  claimSearch,  list,  edit
+p,  claimIntimationSearch-inwardDocumentScanAndUpload-DocumentUpload,  hcp,  claimIntimationSearch,  inwardDocumentScanAndUpload,  DocumentUpload,  edit
+p,  uploadTask-scantag-DocumentUpload,  hcp,  uploadTask,  scantag,  DocumentUpload,  edit
+p,  email-pool-bulkAssign,  hcp,  email,  pool,  bulkAssign,  view
+p,  email-pool-list,  hcp,  email,  pool,  list,  edit
+p,  email-pool-assign,  hcp,  email,  pool,  assign,  view
+p,  email-pool-reassign,  hcp,  email,  pool,  reassign,  view
+
+# Permission mappings (g -> p)
+g, Call Center User, email-pool-search
+g, Call Center User, callCenterUserDashboard-callCenter-searchSection
+g, Call Center User, callCenterUserDashboard-callCenter-showHideColumn
+g, Call Center User, callCenterUserDashboard-callCenter-taskList
+g, Call Center User, callCenterUserDashboard-callCenter-startTask
+g, Call Center User, uploadTask-inwardDocumentScanAndUpload-inwardDocument
+g, Call Center User, uploadTask-inwardDocumentScanAndUpload-DocumentUpload
+g, Call Center User, claimIntimationSearch-claimSearch-search
+g, Call Center User, claimIntimationSearch-claimSearch-list
+g, Call Center User, claimIntimationSearch-inwardDocumentScanAndUpload-DocumentUpload
+g, Call Center User, uploadTask-scantag-DocumentUpload
+g, Call Center User, email-pool-bulkAssign
+g, Call Center User, email-pool-list
+g, Call Center User, email-pool-assign
+g, Call Center User, email-pool-reassign
+
+# Menu mappings (g -> p2)
+g, Call Center User, email_pool_dashboard
+g, Call Center User, call_center_user_dashboard
+
+# Default landing page
+g2, Call Center User, hcp, email_pool_dashboard

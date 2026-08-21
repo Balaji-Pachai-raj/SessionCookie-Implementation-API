@@ -1,0 +1,42 @@
+p,  email-pool-bulkAssign,  hcp,  email,  pool,  bulkAssign,  edit
+p,  genericSearch-genericSearch-search,  hcp,  genericSearch,  genericSearch,  search,  edit
+p,  genericSearch-genericSearch-list,  hcp,  genericSearch,  genericSearch,  list,  edit
+p,  email-pool-search,  hcp,  email,  pool,  search,  edit
+p,  email-pool-list,  hcp,  email,  pool,  list,  edit
+p,  email-pool-assign,  hcp,  email,  pool,  assign,  edit
+p,  email-pool-reassign,  hcp,  email,  pool,  reassign,  edit
+p,  email-team-dashboardView,  hcp,  email,  team,  dashboardView,  edit
+p,  email-team-dashboardDetailView,  hcp,  email,  team,  dashboardDetailView,  edit
+p,  email-team-viewEmailDetails,  hcp,  email,  team,  viewEmailDetails,  edit
+p,  email-team-reassign,  hcp,  email,  team,  reassign,  edit
+p,  teamDashboard-dashboard-dashboard,  hcp,  teamDashboard,  dashboard,  dashboard,  edit
+p,  claimPoolDashboard-dashboard-dashboard,  hcp,  claimPoolDashboard,  dashboard,  dashboard,  edit
+p,  addViewAggregateDeductible-policySearch-addAggregateDeductible,  hcp,  addViewAggregateDeductible,  policySearch,  addAggregateDeductible,  edit
+p,  claimUserDashboard-dashboard-dashboard,  hcp,  claimUserDashboard,  dashboard,  dashboard,  edit
+
+g,  Non Medico TL,  email-pool-bulkAssign
+g,  Non Medico TL,  genericSearch-genericSearch-search
+g,  Non Medico TL,  genericSearch-genericSearch-list
+g,  Non Medico TL,  email-pool-search
+g,  Non Medico TL,  email-pool-list
+g,  Non Medico TL,  email-pool-assign
+g,  Non Medico TL,  email-pool-reassign
+g,  Non Medico TL,  email-team-dashboardView
+g,  Non Medico TL,  email-team-dashboardDetailView
+g,  Non Medico TL,  email-team-viewEmailDetails
+g,  Non Medico TL,  email-team-reassign
+g,  Non Medico TL,  teamDashboard-dashboard-dashboard
+g,  Non Medico TL,  claimPoolDashboard-dashboard-dashboard
+g,  Non Medico TL,  addViewAggregateDeductible-policySearch-addAggregateDeductible
+g,  Non Medico TL,  claimUserDashboard-dashboard-dashboard
+
+# Menu mappings (g -> p2)
+g, Non Medico TL, claims_pool_dashboard
+g, Non Medico TL, claims_team_dashboard
+g, Non Medico TL, claim_user_dashboard_tl
+g, Non Medico TL, email_pool_dashboard
+g, Non Medico TL, email_team_dashboard
+g, Non Medico TL, generic_search
+g, Non Medico TL, add_view_aggregate_deductible
+
+g2,  Non Medico TL,  hcp,  claims_pool_dashboard

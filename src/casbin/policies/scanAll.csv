@@ -1,0 +1,42 @@
+p, inwardRegistrationForm-scantag-inwardRegistrationForm, hcp, inwardRegistrationForm, scantag, inwardRegistrationForm, edit
+p, groupUserDashboard-scantag-searchSection, hcp, groupUserDashboard, scantag, searchSection, edit
+p, groupUserDashboard-scantag-showHideColumn, hcp, groupUserDashboard, scantag, showHideColumn, edit
+p, groupUserDashboard-scantag-taskList, hcp, groupUserDashboard, scantag, taskList, edit
+p, groupUserDashboard-scantag-startTask, hcp, groupUserDashboard, scantag, startTask, edit
+p, claimUserDashboard-scantag-searchSection, hcp, claimUserDashboard, scantag, searchSection, edit
+p, claimUserDashboard-scantag-showHideColumn, hcp, claimUserDashboard, scantag, showHideColumn, edit
+p, claimUserDashboard-scantag-taskList, hcp, claimUserDashboard, scantag, taskList, edit
+p, claimUserDashboard-scantag-startTask, hcp, claimUserDashboard, scantag, startTask, edit
+p, uploadTask-scantag-documentUpload, hcp, uploadTask, scantag, documentUpload, edit
+p, claim-basic-basicDetails, hcp, claim, basic, basicDetails, edit
+p, claim-basic-caregiverDetails, hcp, claim, basic, caregiverDetails, edit
+p, claim-basic-policyDetails, hcp, claim, basic, policyDetails, edit
+p, claim-basic-previousClaims, hcp, claim, basic, previousClaims, edit
+p, claim-hospital-admissionDetails, hcp, claim, hospital, admissionDetails, edit
+p, claim-hospital-hospitalDetails, hcp, claim, hospital, hospitalDetails, edit
+
+g, ScanAll, inwardRegistrationForm-scantag-inwardRegistrationForm
+g, ScanAll, groupUserDashboard-scantag-searchSection
+g, ScanAll, groupUserDashboard-scantag-showHideColumn
+g, ScanAll, groupUserDashboard-scantag-taskList
+g, ScanAll, groupUserDashboard-scantag-startTask
+g, ScanAll, claimUserDashboard-scantag-searchSection
+g, ScanAll, claimUserDashboard-scantag-showHideColumn
+g, ScanAll, claimUserDashboard-scantag-taskList
+g, ScanAll, claimUserDashboard-scantag-startTask
+g, ScanAll, uploadTask-scantag-documentUpload
+g, ScanAll, claim-basic-basicDetails
+g, ScanAll, claim-basic-caregiverDetails
+g, ScanAll, claim-basic-policyDetails
+g, ScanAll, claim-basic-previousClaims
+g, ScanAll, claim-hospital-admissionDetails
+g, ScanAll, claim-hospital-hospitalDetails
+
+# Menu mappings (g -> p2)
+g, ScanAll, inward_entry
+g, ScanAll, scanning_pool_dashboard
+g, ScanAll, claim_intimation_pool_dashboard
+g, ScanAll, intimate_claim
+
+# Default landing page
+g2, ScanAll, hcp, scanning_pool_dashboard

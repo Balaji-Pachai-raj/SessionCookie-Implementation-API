@@ -1,0 +1,57 @@
+p,  claim-fwa-fraudCheck,  hcp,  claim,  fwa,  fraudCheck,  view
+p,  claim-overallClaim-claimDetails,  hcp,  claim,  overallClaim,  claimDetails,  view
+p,  claim-overallClaimDiagnosis-diagnosisDetails,  hcp,  claim,  overallClaimDiagnosis,  diagnosisDetails,  view
+p,  claim-overallClaimDiagnosis-icdCode,  hcp,  claim,  overallClaimDiagnosis,  icdCode,  view
+p,  claim-overallClaimDiagnosis-typeOfTreatment,  hcp,  claim,  overallClaimDiagnosis,  typeOfTreatment,  view
+p,  claim-overallClaimDiagnosis-lineOfTreatment,  hcp,  claim,  overallClaimDiagnosis,  lineOfTreatment,  view
+p,  claim-overallClaimDiagnosis-pcsCode,  hcp,  claim,  overallClaimDiagnosis,  pcsCode,  view
+p,  claim-overallClaimBilling-billingDetails,  hcp,  claim,  overallClaimBilling,  billingDetails,  edit
+p,  claim-overallClaimBilling-packageDetails,  hcp,  claim,  overallClaimBilling,  packageDetails,  edit
+p,  claim-overallClaimBilling-pharmacyDetails,  hcp,  claim,  overallClaimBilling,  pharmacyDetails,  edit
+p,  claim-overallClaimBilling-billSummary,  hcp,  claim,  overallClaimBilling,  billSummary,  edit
+p,  claim-overallClaimMedicoDecision-decision,  hcp,  claim,  overallClaimMedicoDecision,  decision,  view
+p,  claim-qcChecklist-checklist,  hcp,  claim,  qcChecklist,  checklist,  edit
+p,  claim-qcDecision-decision,  hcp,  claim,  qcDecision,  decision,  edit
+p,  claim-overallClaimDetails-overallClaimDetails,  hcp,  claim,  overallClaimDetails,  overallClaimDetails,  edit
+p,  claim-overallClaimTreatment-treatmentDetails,  hcp,  claim,  overallClaimTreatment,  treatmentDetails,  view
+p,  genericSearch-genericSearch-search,  hcp,  genericSearch,  genericSearch,  search,  edit
+p,  genericSearch-genericSearch-list,  hcp,  genericSearch,  genericSearch,  list,  edit
+p,  claim-overallClaimDiagnosis-diagnosisDetails,  hcp,  claim,  overallClaimDiagnosis,  diagnosisDetails,  edit
+p,  claim-overallClaimDiagnosis-icdCode,  hcp,  claim,  overallClaimDiagnosis,  icdCode,  edit
+p,  claim-overallClaimDiagnosis-typeOfTreatment,  hcp,  claim,  overallClaimDiagnosis,  typeOfTreatment,  edit
+p,  claim-overallClaimDiagnosis-lineOfTreatment,  hcp,  claim,  overallClaimDiagnosis,  lineOfTreatment,  edit
+p,  claim-overallClaimDiagnosis-pcsCode,  hcp,  claim,  overallClaimDiagnosis,  pcsCode,  edit
+p,  claimUserDashboard-dashboard-dashboard,  hcp,  claimUserDashboard,  dashboard,  dashboard,  edit
+p,  claimPoolDashboard-dashboard-dashboard,  hcp,  claimPoolDashboard,  dashboard,  dashboard,  edit
+
+g,  QC,  claim-fwa-fraudCheck
+g,  QC,  claim-overallClaim-claimDetails
+g,  QC,  claim-overallClaimDiagnosis-diagnosisDetails
+g,  QC,  claim-overallClaimDiagnosis-icdCode
+g,  QC,  claim-overallClaimDiagnosis-typeOfTreatment
+g,  QC,  claim-overallClaimDiagnosis-lineOfTreatment
+g,  QC,  claim-overallClaimDiagnosis-pcsCode
+g,  QC,  claim-overallClaimBilling-billingDetails
+g,  QC,  claim-overallClaimBilling-packageDetails
+g,  QC,  claim-overallClaimBilling-pharmacyDetails
+g,  QC,  claim-overallClaimBilling-billSummary
+g,  QC,  claim-overallClaimMedicoDecision-decision
+g,  QC,  claim-qcChecklist-checklist
+g,  QC,  claim-qcDecision-decision
+g,  QC,  claim-overallClaimDetails-overallClaimDetails
+g,  QC,  claim-overallClaimTreatment-treatmentDetails
+g,  QC,  genericSearch-genericSearch-search
+g,  QC,  genericSearch-genericSearch-list
+g,  QC,  claim-overallClaimDiagnosis-diagnosisDetails
+g,  QC,  claim-overallClaimDiagnosis-icdCode
+g,  QC,  claim-overallClaimDiagnosis-typeOfTreatment
+g,  QC,  claim-overallClaimDiagnosis-lineOfTreatment
+g,  QC,  claim-overallClaimDiagnosis-pcsCode
+g,  QC,  claimUserDashboard-dashboard-dashboard
+g,  QC,  claimPoolDashboard-dashboard-dashboard
+
+# Menu mappings (g -> p2)
+g, QC, claim_user_dashboard
+g, QC, generic_search
+
+g2,  QC,  hcp,  claim_user_dashboard

@@ -123,7 +123,7 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response,
   ) {
     const user = request.user as TokenPayload;
-    const { tokens, currentRole } = await this.authService.switchRole(
+    const { tokens, currentRole, permissions, menus, landingPage } = await this.authService.switchRole(
       user,
       body,
     );
@@ -133,6 +133,9 @@ export class AuthController {
       message: 'Role changed successfully',
       currentRole,
       user: { id: user.sub, username: user.username },
+      permissions,
+      menus,
+      landingPage,
     };
   }
 

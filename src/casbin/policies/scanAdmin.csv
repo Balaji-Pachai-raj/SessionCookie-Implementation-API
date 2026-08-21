@@ -1,0 +1,42 @@
+p, inwardRegistrationForm-scantag-inwardRegistrationForm, hcp, inwardRegistrationForm, scantag, inwardRegistrationForm, edit
+p, groupUserDashboard-scantag-searchSection, hcp, groupUserDashboard, scantag, searchSection, edit
+p, groupUserDashboard-scantag-showHideColumn, hcp, groupUserDashboard, scantag, showHideColumn, edit
+p, groupUserDashboard-scantag-taskList, hcp, groupUserDashboard, scantag, taskList, edit
+p, groupUserDashboard-scantag-startTask, hcp, groupUserDashboard, scantag, startTask, edit
+p, claimUserDashboard-scantag-searchSection, hcp, claimUserDashboard, scantag, searchSection, edit
+p, claimUserDashboard-scantag-showHideColumn, hcp, claimUserDashboard, scantag, showHideColumn, edit
+p, claimUserDashboard-scantag-taskList, hcp, claimUserDashboard, scantag, taskList, edit
+p, claimUserDashboard-scantag-startTask, hcp, claimUserDashboard, scantag, startTask, edit
+p, uploadTask-scantag-documentUpload, hcp, uploadTask, scantag, documentUpload, edit
+p, claim-basic-basicDetails, hcp, claim, basic, basicDetails, edit
+p, claim-basic-caregiverDetails, hcp, claim, basic, caregiverDetails, edit
+p, claim-basic-policyDetails, hcp, claim, basic, policyDetails, edit
+p, claim-basic-previousClaims, hcp, claim, basic, previousClaims, edit
+p, claim-hospital-admissionDetails, hcp, claim, hospital, admissionDetails, edit
+p, claim-hospital-hospitalDetails, hcp, claim, hospital, hospitalDetails, edit
+
+g, ScanAdmin, inwardRegistrationForm-scantag-inwardRegistrationForm
+g, ScanAdmin, groupUserDashboard-scantag-searchSection
+g, ScanAdmin, groupUserDashboard-scantag-showHideColumn
+g, ScanAdmin, groupUserDashboard-scantag-taskList
+g, ScanAdmin, groupUserDashboard-scantag-startTask
+g, ScanAdmin, claimUserDashboard-scantag-searchSection
+g, ScanAdmin, claimUserDashboard-scantag-showHideColumn
+g, ScanAdmin, claimUserDashboard-scantag-taskList
+g, ScanAdmin, claimUserDashboard-scantag-startTask
+g, ScanAdmin, uploadTask-scantag-documentUpload
+g, ScanAdmin, claim-basic-basicDetails
+g, ScanAdmin, claim-basic-caregiverDetails
+g, ScanAdmin, claim-basic-policyDetails
+g, ScanAdmin, claim-basic-previousClaims
+g, ScanAdmin, claim-hospital-admissionDetails
+g, ScanAdmin, claim-hospital-hospitalDetails
+
+# Menu mappings (g -> p2)
+g, ScanAdmin, inward_entry
+g, ScanAdmin, scanning_pool_dashboard
+g, ScanAdmin, claim_intimation_pool_dashboard
+g, ScanAdmin, intimate_claim
+
+# Default landing page
+g2, ScanAdmin, hcp, claim_intimation_pool_dashboard

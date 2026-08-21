@@ -1,0 +1,81 @@
+p,  claim-basic-basicDetails,  hcp,  claim,  basic,  basicDetails,  edit
+p,  claim-basic-caregiverDetails,  hcp,  claim,  basic,  caregiverDetails,  edit
+p,  claim-basic-policyDetails,  hcp,  claim,  basic,  policyDetails,  edit
+p,  claim-hospital-admissionDetails,  hcp,  claim,  hospital,  admissionDetails,  edit
+p,  claim-hospital-hospitalDetails,  hcp,  claim,  hospital,  hospitalDetails,  edit
+p,  genericSearch-genericSearch-search,  hcp,  genericSearch,  genericSearch,  search,  edit
+p,  genericSearch-genericSearch-list,  hcp,  genericSearch,  genericSearch,  list,  edit
+p,  claim-insights-claimSummary,  hcp,  claim,  insights,  claimSummary,  view
+p,  claim-insights-claimInsights,  hcp,  claim,  insights,  claimInsights,  view
+p,  claim-treatment-medicalInvestigation,  hcp,  claim,  treatment,  medicalInvestigation,  edit
+p,  claim-treatment-doctorDetails,  hcp,  claim,  treatment,  doctorDetails,  edit
+p,  claim-treatment-pastMedicalHistory,  hcp,  claim,  treatment,  pastMedicalHistory,  edit
+p,  claim-treatment-benefitDetails,  hcp,  claim,  treatment,  benefitDetails,  edit
+p,  claim-billing-billingDetails,  hcp,  claim,  billing,  billingDetails,  edit
+p,  claim-billing-packageDetails,  hcp,  claim,  billing,  packageDetails,  edit
+p,  claim-billing-pharmacyDetails,  hcp,  claim,  billing,  pharmacyDetails,  edit
+p,  claim-billing-billDetailSummary,  hcp,  claim,  billing,  billDetailSummary,  edit
+p,  claim-billing-gst,  hcp,  claim,  billing,  gst,  edit
+p,  claim-diagnosis-diagnosisDetails,  hcp,  claim,  diagnosis,  diagnosisDetails,  edit
+p,  claim-diagnosis-icdCode,  hcp,  claim,  diagnosis,  icdCode,  edit
+p,  claim-diagnosis-typeOfTreatment,  hcp,  claim,  diagnosis,  typeOfTreatment,  edit
+p,  claim-diagnosis-lineOfTreatment,  hcp,  claim,  diagnosis,  lineOfTreatment,  edit
+p,  claim-diagnosis-pcsCode,  hcp,  claim,  diagnosis,  pcsCode,  edit
+p,  claim-decision-fraudCheck,  hcp,  claim,  decision,  fraudCheck,  edit
+p,  claim-decision-checklist,  hcp,  claim,  decision,  checklist,  edit
+p,  claim-decision-medicoDecision,  hcp,  claim,  decision,  medicoDecision,  edit
+p,  claim-decision-processingRemark,  hcp,  claim,  decision,  processingRemark,  edit
+p,  email-user-dashboardView,  hcp,  email,  user,  dashboardView,  edit
+p,  email-user-viewEmailDetails,  hcp,  email,  user,  viewEmailDetails,  edit
+p,  email-user-expertOpinion,  hcp,  email,  user,  expertOpinion,  edit
+p,  email-user-reply,  hcp,  email,  user,  reply,  edit
+p,  email-user-forward,  hcp,  email,  user,  forward,  edit
+p,  claim-insights-claimSummary,  hcp,  claim,  insights,  claimSummary,  edit
+p,  claim-insights-claimInsights,  hcp,  claim,  insights,  claimInsights,  edit
+p,  claimUserDashboard-dashboard-dashboard,  hcp,  claimUserDashboard,  dashboard,  dashboard,  edit
+p,  claimPoolDashboard-dashboard-dashboard,  hcp,  claimPoolDashboard,  dashboard,  dashboard,  edit
+
+g,  Non Medico,  claim-basic-basicDetails
+g,  Non Medico,  claim-basic-caregiverDetails
+g,  Non Medico,  claim-basic-policyDetails
+g,  Non Medico,  claim-hospital-admissionDetails
+g,  Non Medico,  claim-hospital-hospitalDetails
+g,  Non Medico,  genericSearch-genericSearch-search
+g,  Non Medico,  genericSearch-genericSearch-list
+g,  Non Medico,  claim-insights-claimSummary
+g,  Non Medico,  claim-insights-claimInsights
+g,  Non Medico,  claim-treatment-medicalInvestigation
+g,  Non Medico,  claim-treatment-doctorDetails
+g,  Non Medico,  claim-treatment-pastMedicalHistory
+g,  Non Medico,  claim-treatment-benefitDetails
+g,  Non Medico,  claim-billing-billingDetails
+g,  Non Medico,  claim-billing-packageDetails
+g,  Non Medico,  claim-billing-pharmacyDetails
+g,  Non Medico,  claim-billing-billDetailSummary
+g,  Non Medico,  claim-billing-gst
+g,  Non Medico,  claim-diagnosis-diagnosisDetails
+g,  Non Medico,  claim-diagnosis-icdCode
+g,  Non Medico,  claim-diagnosis-typeOfTreatment
+g,  Non Medico,  claim-diagnosis-lineOfTreatment
+g,  Non Medico,  claim-diagnosis-pcsCode
+g,  Non Medico,  claim-decision-fraudCheck
+g,  Non Medico,  claim-decision-checklist
+g,  Non Medico,  claim-decision-medicoDecision
+g,  Non Medico,  claim-decision-processingRemark
+g,  Non Medico,  email-user-dashboardView
+g,  Non Medico,  email-user-viewEmailDetails
+g,  Non Medico,  email-user-expertOpinion
+g,  Non Medico,  email-user-reply
+g,  Non Medico,  email-user-forward
+g,  Non Medico,  claim-insights-claimSummary
+g,  Non Medico,  claim-insights-claimInsights
+g,  Non Medico,  claimUserDashboard-dashboard-dashboard
+g,  Non Medico,  claimPoolDashboard-dashboard-dashboard
+
+# Menu mappings (g -> p2)
+g, Non Medico, claim_user_dashboard
+g, Non Medico, email_user_dashboard
+g, Non Medico, generic_search
+g, Non Medico, intimate_claim
+
+g2,  Non Medico,  hcp,  claim_user_dashboard

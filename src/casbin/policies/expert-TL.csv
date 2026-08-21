@@ -1,0 +1,89 @@
+p, email-pool-bulkAssign, hcp, email, pool, bulkAssign, edit
+p, claim-basic-basicDetail, hcp, claim, basic, basicDetails, edit
+p, claim-basic-caregiverDetails, hcp, claim, basic, caregiverDetails, edit
+p, claim-basic-policyDetails, hcp, claim, basic, policyDetails, edit
+p, claim-basic-previousClaims, hcp, claim, basic, previousClaims, edit
+p, claim-hospital-admissionDetails, hcp, claim, hospital, admissionDetails, edit
+p, claim-hospital-hospitalDetails, hcp, claim, hospital, hospitalDetails, edit
+p, claim-overallClaimDiagnosis-diagnosisDetails, hcp, claim, overallClaimDiagnosis, diagnosisDetails, view
+p, claim-overallClaimDiagnosis-icdCode, hcp, claim, overallClaimDiagnosis, icdCode, view
+p, claim-overallClaimDiagnosis-typeOfTreatment, hcp, claim, overallClaimDiagnosis, typeOfTreatment, view
+p, claim-overallClaimDiagnosis-lineOfTreatment, hcp, claim, overallClaimDiagnosis, lineOfTreatment, view
+p, claim-overallClaimDiagnosis-pcsCode, hcp, claim, overallClaimDiagnosis, pcsCode, view
+p, claim-overallClaimBilling-billingDetails, hcp, claim, overallClaimBilling, billingDetails, edit
+p, claim-overallClaimBilling-packageDetails, hcp, claim, overallClaimBilling, packageDetails, edit
+p, claim-overallClaimBilling-pharmacyDetails, hcp, claim, overallClaimBilling, pharmacyDetails, edit
+p, claim-insights-claimSummary, hcp, claim, insights, claimSummary, view
+p, claim-insights-claimInsights, hcp, claim, insights, claimInsights, view
+p, claim-treatment-medicalInvestigation, hcp, claim, treatment, medicalInvestigation, edit
+p, claim-treatment-doctorDetails, hcp, claim, treatment, doctorDetails, edit
+p, claim-treatment-pastMedicalHistory, hcp, claim, treatment, pastMedicalHistory, edit
+p, claim-treatment-benefitDetails, hcp, claim, treatment, benefitDetails, edit
+p, claim-decision-checklist, hcp, claim, decision, checklist, edit
+p, claim-decision-medicoDecision, hcp, claim, decision, medicoDecision, edit
+p, claim-decision-processingRemark, hcp, claim, decision, processingRemark, edit
+p, email-pool-search, hcp, email, pool, search, edit
+p, email-pool-list, hcp, email, pool, list, edit
+p, email-pool-assign, hcp, email, pool, assign, edit
+p, email-pool-reassign, hcp, email, pool, reassign, edit
+p, email-team-dashboardView, hcp, email, team, dashboardView, edit
+p, email-team-dashboardDetailView, hcp, email, team, dashboardDetailView, edit
+p, email-team-viewEmailDetails, hcp, email, team, viewEmailDetails, edit
+p, email-team-reassign, hcp, email, team, reassign, edit
+p, claim-insights-claimSummary, hcp, claim, insights, claimSummary, edit
+p, claim-insights-claimInsights, hcp, claim, insights, claimInsights, edit
+p, claim-overallClaimBilling-billDetailSummary, hcp, claim, overallClaimBilling, billDetailSummary, edit
+p, claim-overallClaimBilling-gst, hcp, claim, overallClaimBilling, gst, edit
+p, claim-overallClaimDiagnosis-diagnosisDetails, hcp, claim, overallClaimDiagnosis, diagnosisDetails, edit
+p, claim-overallClaimDiagnosis-icdCode, hcp, claim, overallClaimDiagnosis, icdCode, edit
+p, claim-overallClaimDiagnosis-typeOfTreatment, hcp, claim, overallClaimDiagnosis, typeOfTreatment, edit
+p, claim-overallClaimDiagnosis-lineOfTreatment, hcp, claim, overallClaimDiagnosis, lineOfTreatment, edit
+p, claim-overallClaimDiagnosis-pcsCode, hcp, claim, overallClaimDiagnosis, pcsCode, edit
+
+g, Expert TL, email-pool-bulkAssign
+g, Expert TL, claim-basic-basicDetail
+g, Expert TL, claim-basic-caregiverDetails
+g, Expert TL, claim-basic-policyDetails
+g, Expert TL, claim-basic-previousClaims
+g, Expert TL, claim-hospital-admissionDetails
+g, Expert TL, claim-hospital-hospitalDetails
+g, Expert TL, claim-overallClaimDiagnosis-diagnosisDetails
+g, Expert TL, claim-overallClaimDiagnosis-icdCode
+g, Expert TL, claim-overallClaimDiagnosis-typeOfTreatment
+g, Expert TL, claim-overallClaimDiagnosis-lineOfTreatment
+g, Expert TL, claim-overallClaimDiagnosis-pcsCode
+g, Expert TL, claim-overallClaimBilling-billingDetails
+g, Expert TL, claim-overallClaimBilling-packageDetails
+g, Expert TL, claim-overallClaimBilling-pharmacyDetails
+g, Expert TL, claim-insights-claimSummary
+g, Expert TL, claim-insights-claimInsights
+g, Expert TL, claim-treatment-medicalInvestigation
+g, Expert TL, claim-treatment-doctorDetails
+g, Expert TL, claim-treatment-pastMedicalHistory
+g, Expert TL, claim-treatment-benefitDetails
+g, Expert TL, claim-decision-checklist
+g, Expert TL, claim-decision-medicoDecision
+g, Expert TL, claim-decision-processingRemark
+g, Expert TL, email-pool-search
+g, Expert TL, email-pool-list
+g, Expert TL, email-pool-assign
+g, Expert TL, email-pool-reassign
+g, Expert TL, email-team-dashboardView
+g, Expert TL, email-team-dashboardDetailView
+g, Expert TL, email-team-viewEmailDetails
+g, Expert TL, email-team-reassign
+g, Expert TL, claim-insights-claimSummary
+g, Expert TL, claim-insights-claimInsights
+g, Expert TL, claim-overallClaimBilling-billDetailSummary
+g, Expert TL, claim-overallClaimBilling-gst
+g, Expert TL, claim-overallClaimDiagnosis-diagnosisDetails
+g, Expert TL, claim-overallClaimDiagnosis-icdCode
+g, Expert TL, claim-overallClaimDiagnosis-typeOfTreatment
+g, Expert TL, claim-overallClaimDiagnosis-lineOfTreatment
+g, Expert TL, claim-overallClaimDiagnosis-pcsCode
+
+g,  Expert TL,  claim_page
+g,  Expert TL,  email_pool
+g,  Expert TL,  email_team
+
+g2,  Expert TL,  hcp,  claim_page

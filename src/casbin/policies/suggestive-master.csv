@@ -1,0 +1,11 @@
+
+
+p,  suggestiveMaster-suggestiveMaster-suggestiveMaster,  hcp,  suggestiveMaster,  suggestiveMaster,  suggestiveMaster,  edit
+
+g,  Master Data Analyst,  suggestiveMaster-suggestiveMaster-suggestiveMaster
+
+# Menu mappings (g -> p2)
+g,  Master Data Analyst,  suggestive_master
+
+# Default landing page
+g2,  Master Data Analyst,  hcp,  suggestive_master

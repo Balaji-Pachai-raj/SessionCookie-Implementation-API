@@ -10,6 +10,7 @@ import type { SignOptions } from 'jsonwebtoken';
 import ms from 'ms';
 import { PrismaService } from './PrismaService/prisma.service';
 import { RedisService } from './redis.service';
+import { CasbinService } from './casbin/casbin.service';
 // import { PrismaService } from '../prisma/prisma.service';
 
 // ============================================================================
@@ -97,6 +98,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     private readonly redisService: RedisService,
+    private readonly casbinService: CasbinService,
   ) {}
 
   async login(
@@ -114,11 +116,11 @@ export class AuthService {
         this.redisService.get(accessKey),
         this.redisService.get(refreshKey),
       ]);
-       console.log('Redis access key:', accessKey);
-  console.log('Redis access value:', existingAccess);
+      console.log('Redis access key:', accessKey);
+      console.log('Redis access value:', existingAccess);
+      console.log('Redis refresh key:', refreshKey);
+      console.log('Redis refresh value:', existingRefresh);
 
-  console.log('Redis refresh key:', refreshKey);
-  console.log('Redis refresh value:', existingRefresh);
     } catch {
       throw new HttpException(
         {
@@ -242,14 +244,33 @@ export class AuthService {
       throw new UnauthorizedException('Nt_id is not there');
     }
 
+    const roleName = payload.userDetails?.role_name;
+
+
+    if (!roleName) {
+      throw new UnauthorizedException('Role is not available in token');
+    }
+
     const roles = await this.prisma.user_role_mapping.findMany({
       where: { nt_id },
       include: { role_master: true },
     });
 
+    const permissions =
+      await this.casbinService.getPermissionsForRole(roleName);
+
+    const menus =
+      await this.casbinService.getMenusForRole(roleName);
+
+    const landingPage =
+      await this.casbinService.getLandingPagesForRole(roleName);
+
     return {
       currentRole: this.serializeBigInt(roles),
       user: { id: payload.sub, username: payload.username },
+      permissions,
+      menus,
+      landingPage,
     };
   }
 
@@ -321,6 +342,22 @@ export class AuthService {
       );
     }
 
+    const roleName = requestedRole.role_master.role_name;
+
+    // Get permissions directly from Casbin CSV policies
+    const permissions =
+      await this.casbinService.getPermissionsForRole(
+        roleName,
+    );
+    const menus =
+      await this.casbinService.getMenusForRole(
+        roleName,
+      );
+
+    const landingPage =
+      await this.casbinService.getLandingPagesForRole(
+        roleName,
+      );
     const newUserDetails: UserTokenDetails = {
       nt_id,
       userDetails: nt_id,
@@ -339,7 +376,7 @@ export class AuthService {
 
     await this.storeUserTokens(currentPayload.sub, tokens);
 
-    return { tokens, currentRole: this.serializeBigInt(requestedRole) };
+    return { tokens, currentRole: this.serializeBigInt(requestedRole), permissions, menus, landingPage };
   }
 
   /** Used directly by the controller before any protected route runs. */

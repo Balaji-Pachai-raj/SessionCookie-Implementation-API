@@ -1,0 +1,38 @@
+p, userManagement-reviewPendingReviewer-list, hcp, userManagement, reviewPendingReviewer, list, edit
+p, userManagement-search-searchUserAction, hcp, userManagement, search, searchUserAction, edit
+p, userManagement-search-searchList, hcp, userManagement, search, searchList, edit
+p, userManagement-userDeactivate-deactivateUserRequest, hcp, userManagement, userDeactivate, deactivateUserRequest, edit
+p, userManagement-updateUserRole-updateUserRoleRequest, hcp, userManagement, updateUserRole, updateUserRoleRequest, edit
+p, userManagement-updateUserDetail-updateUserDetailRequest, hcp, userManagement, updateUserDetail, updateUserDetailRequest, edit
+p, userManagement-newUserForm-newUserFormRequest, hcp, userManagement, newUserForm, newUserFormRequest, edit
+p, userManagement-summaryOfMonth-summaryDetails, hcp, userManagement, summaryOfMonth, summaryDetails, view
+p, userManagement-reviewPendingRequest-initiatorNewCreationRequest, hcp, userManagement, reviewPendingRequest, initiatorNewCreationRequest, edit
+p, userManagement-reviewPendingRequest-activateUserRequest, hcp, userManagement, reviewPendingRequest, activateUserRequest, edit
+p, userManagement-reviewPendingRequest-deactivateUserRequest, hcp, userManagement, reviewPendingRequest, deactivateUserRequest, edit
+p, userManagement-reviewPendingRequest-updateUserRoleRequest, hcp, userManagement, reviewPendingRequest, updateUserRoleRequest, edit
+p, userManagement-reviewPendingRequest-updateUserDetailRequest, hcp, userManagement, reviewPendingRequest, updateUserDetailRequest, edit
+p, userManagement-tabSection-searchUser, hcp, userManagement, tabSection, searchUser, edit
+p, userManagement-tabSection-dashboard, hcp, userManagement, tabSection, dashboard, edit
+
+g, User Access Support Reviewer, userManagement-reviewPendingReviewer-list
+g, User Access Support Reviewer, userManagement-search-searchUserAction
+g, User Access Support Reviewer, userManagement-search-searchList
+g, User Access Support Reviewer, userManagement-userDeactivate-deactivateUserRequest
+g, User Access Support Reviewer, userManagement-updateUserRole-updateUserRoleRequest
+g, User Access Support Reviewer, userManagement-updateUserDetail-updateUserDetailRequest
+g, User Access Support Reviewer, userManagement-newUserForm-newUserFormRequest
+g, User Access Support Reviewer, userManagement-summaryOfMonth-summaryDetails
+g, User Access Support Reviewer, userManagement-reviewPendingRequest-initiatorNewCreationRequest
+g, User Access Support Reviewer, userManagement-reviewPendingRequest-activateUserRequest
+g, User Access Support Reviewer, userManagement-reviewPendingRequest-deactivateUserRequest
+g, User Access Support Reviewer, userManagement-reviewPendingRequest-updateUserRoleRequest
+g, User Access Support Reviewer, userManagement-reviewPendingRequest-updateUserDetailRequest
+g, User Access Support Reviewer, userManagement-tabSection-searchUser
+g, User Access Support Reviewer, userManagement-tabSection-dashboard
+
+# Menu mappings (g -> p2)
+g, User Access Support Reviewer, dashboard_reviewer
+g, User Access Support Reviewer, search_user
+
+# Default landing page
+g2, User Access Support Reviewer, hcp, dashboard_reviewer

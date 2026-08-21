@@ -1,0 +1,20 @@
+p,  email-user-dashboardView,    hcp,   email,    user,  dashboardView,   edit
+p,  email-user-viewEmailDetails,     hcp,    email,     user,   viewEmailDetails,     edit
+p,  email-user-expertOpinion,    hcp,   email,    user,  expertOpinion,   edit
+p,  email-user-reply,    hcp,   email,    user,  reply,   edit
+p,  email-user-forward,  hcp,     email,  user,    forward,   edit
+p,  claimPoolDashboard-dashboard-dashboard,  hcp,   claimPoolDashboard,  dashboard,  dashboard,  edit
+
+g,	NonMedico Pool User,	email-user-dashboardView	
+g,	NonMedico Pool User,	email-user-viewEmailDetails	
+g,	NonMedico Pool User,	email-user-expertOpinion	
+g,	NonMedico Pool User,	email-user-reply	
+g,	NonMedico Pool User,	email-user-forward	
+g,	NonMedico Pool User,	claimPoolDashboard-dashboard-dashboard
+
+# Menu mappings (g -> p2)
+g,  NonMedico Pool User,  claims_pool_dashboard
+g,  NonMedico Pool User,  email_user_dashboard
+
+# Default landing page
+g2,  NonMedico Pool User,  hcp,  claims_pool_dashboard
