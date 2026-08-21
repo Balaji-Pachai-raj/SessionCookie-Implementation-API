@@ -114,11 +114,7 @@ export class AuthService {
         this.redisService.get(accessKey),
         this.redisService.get(refreshKey),
       ]);
-       console.log('Redis access key:', accessKey);
-  console.log('Redis access value:', existingAccess);
-
-  console.log('Redis refresh key:', refreshKey);
-  console.log('Redis refresh value:', existingRefresh);
+      
     } catch {
       throw new HttpException(
         {
@@ -133,17 +129,6 @@ export class AuthService {
     const hasExistingSession =
       existingAccess !== null || existingRefresh !== null;
 
-      console.log(hasExistingSession)
-
-    console.log('Redis check for login => ', {
-      accessKey,
-      refreshKey,
-      existingAccess: existingAccess !== null,
-      existingRefresh: existingRefresh !== null,
-      accessPreview: existingAccess ? existingAccess.slice(0, 20) : null,
-      refreshPreview: existingRefresh ? existingRefresh.slice(0, 20) : null,
-      hasExistingSession,
-    });
     if (hasExistingSession) {
       throw new HttpException(
         {
@@ -175,7 +160,7 @@ export class AuthService {
       role_id: activeRole?.role_id?.toString(),
       user_role_mapping_id: activeRole?.user_role_mapping_id?.toString(),
     });
-    console.log('Tokens => ', tokens);
+
 
     try {
       await this.storeUserTokens(user.nt_id, tokens);
@@ -459,13 +444,6 @@ export class AuthService {
     this.redisService.get(accessKey),
     this.redisService.get(refreshKey),
   ]);
-
-  // Log the Redis keys and values
-  console.log('Redis Access Key:', accessKey);
-  console.log('Redis Access Token:', storedAccessToken);
-
-  console.log('Redis Refresh Key:', refreshKey);
-  console.log('Redis Refresh Token:', storedRefreshToken);
   }
 
   public getRedisKey(type: 'ACCESS' | 'REFRESH', userId: string): string {

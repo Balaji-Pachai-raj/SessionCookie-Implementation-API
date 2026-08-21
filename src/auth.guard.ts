@@ -26,12 +26,9 @@ export class AuthGuard implements CanActivate {
       context.getClass(),
     ]);
 
-     console.log('first AuthGuard: Checking access token and session in Redis...');
     if (isPublic) {
       return true;
     }
-
-    console.log('AuthGuard: Checking access token and session in Redis...');
 
     const request = context
       .switchToHttp()

@@ -15,6 +15,7 @@ import {
   TokenPayload,
 } from './app.service';
 import { Public } from './public.decorator';
+import {Logger} from 'nest-common-utilities';
 
 export class LoginDto {
   username!: string;
@@ -28,24 +29,38 @@ export class LoginDto {
 // ============================================================================
 @Controller('api')
 export class AuthController {
+  private logger = new Logger(AuthController.name);
   constructor(private readonly authService: AuthService) {}
 
-  @Public()
-  @Post('login')
-  async login(
-    @Body() body: LoginDto,
-    @Res({ passthrough: true }) response: Response,
-  ) {
-    const result = await this.authService.login(body.username, body.password);
+@Public()
+@Post('login')
+async login(
+  @Body() body: LoginDto,
+  @Res({ passthrough: true }) response: Response,
+) {
+  this.logger.info('Entering login controller', {
+    methodName: 'login',
+    username: body.username,
+  });
 
-    this.setAuthCookies(response, result);
+  const result = await this.authService.login(
+    body.username,
+    body.password,
+  );
 
-    return {
-      success: true,
-      code: 'LOGIN_SUCCESS',
-      message: 'Login successful',
-    };
-  }
+  this.setAuthCookies(response, result);
+
+  this.logger.info('Login successful', {
+    methodName: 'login',
+    username: body.username,
+  });
+
+  return {
+    success: true,
+    code: 'LOGIN_SUCCESS',
+    message: 'Login successful',
+  };
+}
 
   @Public()
   @Post('continue-session')
@@ -175,8 +190,7 @@ export class AuthController {
   ) {
     const { cookie } = AUTH_CONFIG;
 
-    console.log('Token => ', tokens);
-
+  
     response.cookie(cookie.accessToken.name, tokens.accessToken, {
       httpOnly: true,
       secure: cookie.secure,
@@ -185,7 +199,7 @@ export class AuthController {
       path: cookie.accessToken.path,
     });
 
-    console.log('Cookie => ', cookie);
+   
 
     response.cookie(cookie.refreshToken.name, tokens.refreshToken, {
       httpOnly: true,
